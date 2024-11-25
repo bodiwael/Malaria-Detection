@@ -36,7 +36,7 @@ async function model_makePrediction(fname) {
 	let top5 = Array.from(predictions)
 		.map(function (p, i) { // this is Array.map
 			return {
-				probability: p,
+				probability: p*100,
 				className: TARGET_CLASSES[i] // we are selecting the value from the obj
 			};
 				
