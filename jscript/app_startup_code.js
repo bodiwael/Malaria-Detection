@@ -30,8 +30,8 @@ function predictOnLoad() {
 let model;
 (async function () {
 	
-	model = await tf.loadModel('http://malaria.test.woza.work/final_model/model.json');
-	$("#selected-image").attr("src", "http://malaria.test.woza.work/assets/parasitized.png");
+	model = await tf.loadModel('final_model/model.json');
+	$("#selected-image").attr("src", "assets/parasitized.png");
 	
 	// Hide the model loading spinner
 	// This line of html gets hidden:
@@ -87,7 +87,7 @@ $("#predict-button").click(async function () {
 	let top5 = Array.from(predictions)
 		.map(function (p, i) { // this is Array.map
 			return {
-				probability: p,
+				probability: p*100,
 				className: TARGET_CLASSES[i] 
 			};
 				
